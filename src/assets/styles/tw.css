@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  --color-light-gray: #f7f7f5;
+  --color-dark-gray: #1a1a1a;
+  --color-gold: #d4a21e;
+  --color-gold-hover: #b88e1a;
+
+  --color-gray-50: #f9f9f9;
+  --color-gray-100: #f0f0f0;
+  --color-gray-200: #e0e0e0;
+  --color-gray-300: #cfcfcf;
+  --color-gray-400: #b0b0b0;
+  --color-gray-500: #909090;
+  --color-gray-600: #6e6e6e;
+  --color-gray-700: #4e4e4e;
+  --color-gray-800: #2e2e2e;
+  --color-gray-900: #1a1a1a;
+
+  --color-background-light: var(--color-light-gray);
+  --color-text-light: var(--color-dark-gray);
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+  --font-sans: 'Inter', sans-serif;
+}
