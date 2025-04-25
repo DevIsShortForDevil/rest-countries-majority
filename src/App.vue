@@ -4,7 +4,10 @@
     class="flex flex-col w-screen h-screen bg-light-gray dark:bg-dark-gray transition-colors duration-300 ease-in-out"
   >
     <header class="flex justify-between items-center h-14 md:h-18 py-4 px-6 md:px-12">
-      <div class="text-dark-gray dark:text-light-gray">{{ t('projectTitle') }}</div>
+      <div class="flex items-center">
+        <img src="@/assets/images/logo_slim.png" alt="" srcset="" class="h-16" />
+        <!-- <img src="@/assets/images/logo_name.png" alt="" srcset="" class="h-12" /> -->
+      </div>
       <div class="flex gap-2 items-center">
         <button
           class="w-9 h-9 p-2 bg-dark-gray text-light-gray rounded-lg dark:bg-light-gray dark:text-dark-gray relative flex justify-center items-center cursor-pointer transition-colors duration-300 ease-in-out"
