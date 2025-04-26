@@ -1,8 +1,8 @@
 <template>
-  <Listbox v-model="selectedValue">
+  <Listbox v-model="selectedValue" class="w-1/6 md:w-30">
     <div class="relative">
       <ListboxButton
-        class="w-30 h-full p-2 text-dark-gray rounded-s-lg dark:text-light-gray hover:bg-gold-lighter hover:text-dark-gray flex justify-between items-center cursor-pointer transition-colors duration-300 ease-in-out"
+        class="w-full h-full p-2 text-dark-gray rounded-s-lg dark:text-light-gray hover:bg-gold-lighter hover:text-dark-gray flex justify-between items-center cursor-pointer transition-colors duration-300 ease-in-out text-xs sm:text-sm md:text-base"
       >
         <span>
           {{ t(`searchFields.${selectedValue}`) }}

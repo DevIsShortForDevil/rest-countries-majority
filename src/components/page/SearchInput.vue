@@ -1,6 +1,6 @@
 <template>
   <Combobox v-model="selectedValue">
-    <div class="relative w-120">
+    <div class="relative w-4/6 md:w-120">
       <div
         class="relative flex items-center w-full h-full cursor-default overflow-hidden bg-light-gray dark:bg-dark-gray text-left focus:outline-none focus-visible:ring-offset-0 sm:text-sm transition-colors duration-300 ease-in-out"
       >
@@ -28,7 +28,11 @@
             if (!observer) createObserver();
           }
         "
-        @after-leave="query = ''"
+        @after-leave="
+          () => {
+            query = '';
+          }
+        "
       >
         <ComboboxOptions
           v-show="!loading"
@@ -102,11 +106,11 @@ const { field } = toRefs(props);
 
 const selectedValue = defineModel<Country | null>({ required: true });
 const countries = defineModel<Country[]>('countries', { required: true });
+const query = defineModel<string>('query', { required: true });
+const loading = defineModel<boolean>('loading', { required: true });
 
 const { t } = useI18n();
 
-const loading = ref(false);
-const query = ref('');
 const onQueryChange = (q: string) => {
   query.value = q;
   loading.value = true;
@@ -118,7 +122,7 @@ watch(field, (val) => {
 });
 
 const responseFilter =
-  'fields=name,independent,unmember,idd,currencies,capital,region,languages,translations,area,flag,flags,maps,population,timezones';
+  'fields=name,independent,unmember,idd,cca2,currencies,capital,region,languages,translations,area,flag,flags,maps,population,timezones';
 const fetchCountries = (f: Fields, q: string) => {
   loading.value = true;
   axios

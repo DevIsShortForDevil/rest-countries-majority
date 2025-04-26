@@ -23,6 +23,7 @@ export interface Currency {
 }
 export interface Country {
   name: CountryName;
+  cca2: string;
   independant: boolean;
   unmember: boolean;
   currencies: { [key: string]: Currency };
@@ -36,4 +37,5 @@ export interface Country {
   translations: { [key: string]: CountryName };
   area: number;
   maps: { [key: string]: string };
+  idd: { root: string; suffixes: string[] };
 }

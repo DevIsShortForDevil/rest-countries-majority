@@ -28,5 +28,14 @@
   --radius-2xl: 1.5rem;
   --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.08);
 
+  --spacing-header-height: 3.5rem;
+  --spacing-header-height-md: 4.5rem;
+  --spacing-main-height: calc(100vh - 3.5rem);
+  --spacing-main-height-md: calc(100vh - 4.5rem);
+  --spacing-searchbar-height: 2.5rem;
+  --spacing-searchbar-height-md: 3.5rem;
+  --spacing-worldmap-height: calc(100% - 2.5rem);
+  --spacing-worldmap-height-md: calc(100% - 3.5rem);
+
   --font-sans: 'Inter', sans-serif;
 }
