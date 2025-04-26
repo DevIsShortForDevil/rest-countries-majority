@@ -164,7 +164,7 @@ const fetchCountry = (id: string) => {
       country.value = res.data[0];
     })
     .catch((err: AxiosError) => {
-      if (err.response?.status === 404) notFound.value = true;
+      if (err.response?.status === 404 || err.response?.status === 400) notFound.value = true;
     })
     .finally(() => {
       loading.value = false;
