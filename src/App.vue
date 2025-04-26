@@ -5,8 +5,8 @@
   >
     <header class="flex justify-between items-center h-14 md:h-18 py-4 px-6 md:px-12">
       <div class="flex items-center">
-        <img src="@/assets/images/logo_slim.png" alt="" srcset="" class="h-16" />
-        <!-- <img src="@/assets/images/logo_name.png" alt="" srcset="" class="h-12" /> -->
+        <LogoIcon />
+        <!-- <img src="@/assets/images/logo_slim.png" alt="" srcset="" class="h-16" /> -->
       </div>
       <div class="flex gap-2 items-center">
         <button
@@ -35,13 +35,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
 import { RouterView } from 'vue-router';
 import { useLayoutStore } from '@/stores/layout';
 import MoonIcon from '@/assets/icons/MoonIcon.vue';
 import SunIcon from '@/assets/icons/SunIcon.vue';
 import LocaleSelect from '@/components/layout/LocaleSelect.vue';
+import LogoIcon from '@/assets/icons/LogoIcon.vue';
 
-const { t } = useI18n();
 const layoutStore = useLayoutStore();
 </script>
