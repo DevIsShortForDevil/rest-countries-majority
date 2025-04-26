@@ -33,11 +33,11 @@
         <ComboboxOptions
           v-show="!loading"
           id="observerRoot"
-          class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-light-gray dark:bg-dark-gray py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
+          class="absolute mt-1 max-h-60 w-full overflow-auto rounded-lg bg-light-gray dark:bg-dark-gray py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
         >
           <div
             v-if="countries.length === 0 && query !== '' && !loading"
-            class="relative cursor-default select-none px-4 py-2 text-gray-700"
+            class="relative cursor-default select-none px-4 py-2 text-dark-gray dark:text-light-gray"
           >
             {{ t('noItems') }}
           </div>
@@ -50,10 +50,10 @@
             v-slot="{ selected, active }"
           >
             <li
-              class="relative cursor-default select-none py-2 pl-10 pr-4"
+              class="relative cursor-default select-none py-2 pl-10 pr-4 transition-colors duration-200 ease-in-out"
               :class="{
-                'bg-teal-600 text-white': active,
-                'text-gray-900': !active,
+                'bg-gold text-dark-gray': active,
+                'bg-light-gray text-dark-gray dark:bg-dark-gray dark:text-light-gray': !active,
               }"
             >
               <span
