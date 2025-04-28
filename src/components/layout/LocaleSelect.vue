@@ -1,4 +1,5 @@
 <template>
+  <!-- The value is bound to the I18n settings and kept in sync in localStorage when selected. -->
   <Listbox :model-value="locale" @update:model-value="onLocaleChange">
     <div class="relative">
       <ListboxButton

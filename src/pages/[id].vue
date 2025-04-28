@@ -102,6 +102,7 @@
         </div>
       </div>
     </div>
+    <!-- notFound State for handling response 404 -->
     <div v-else-if="notFound" class="flex flex-col items-center gap-8">
       <div
         class="text-dark-gray dark:text-light-gray text-2xl sm:text-4xl font-serif transition-colors duration-300 ease-in-out"
@@ -116,6 +117,7 @@
       </button>
     </div>
 
+    <!-- Error State for handling API and connection failures -->
     <div v-else class="flex flex-col items-center gap-8">
       <div
         class="text-dark-gray dark:text-light-gray text-2xl sm:text-4xl font-serif transition-colors duration-300 ease-in-out"
@@ -158,6 +160,8 @@ const country = ref<Country | null>(null);
 const loading = ref(true);
 const notFound = ref(false);
 
+// I wanted to have the details page independat of any data from the main page other that the id that is provided in route params,
+// So using the exact cca2 id and a workaround on the API below, I get the data from the backend instead of the main page.
 const fetchCountry = (id: string) => {
   loading.value = true;
   axios
@@ -166,6 +170,8 @@ const fetchCountry = (id: string) => {
       country.value = res.data[0];
     })
     .catch((err: AxiosError) => {
+      // if a country is not found (404) or when the id (cca2 and cca3 should have 3 characters at max) is not formatted correctly the not found state is true.
+      // Even though a 400 response is a bad request and any cca2 id that is more than 3 characters will trigger this response, the alpha code provided still doesn't exist and is considered as a notFound state.
       if (err.response?.status === 404 || err.response?.status === 400) notFound.value = true;
     })
     .finally(() => {

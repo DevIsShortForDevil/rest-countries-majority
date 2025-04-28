@@ -25,6 +25,7 @@
         leaveTo="opacity-0"
         @after-enter="
           () => {
+            // Since the search menu is rendered only when is opened, the observer had to be created after it was opened, so this was the best and probably only place it could've been put.
             if (!observer) createObserver();
           }
         "
@@ -102,7 +103,7 @@ interface Props {
   field: Fields;
 }
 const props = defineProps<Props>();
-const { field } = toRefs(props);
+const { field } = toRefs(props); // The field prop is passed as prop to be used in the API call.
 
 const selectedValue = defineModel<Country | null>({ required: true });
 const countries = defineModel<Country[]>('countries', { required: true });
@@ -121,6 +122,7 @@ watch(field, (val) => {
   debouncedFetch(val, query.value);
 });
 
+// This is a response filter to limit the properties of the country object and to optimize the size of the response.
 const responseFilter =
   'fields=name,independent,unmember,idd,cca2,currencies,capital,region,languages,translations,area,flag,flags,maps,population,timezones';
 const fetchCountries = (f: Fields, q: string) => {
@@ -140,6 +142,8 @@ const fetchCountries = (f: Fields, q: string) => {
       loading.value = false;
     });
 };
+
+// the fetch function is put of a debounce to optimize API calls based on query changes.
 const debouncedFetch = debounce(
   (f: Fields, q: string) => {
     fetchCountries(f, q);
@@ -151,12 +155,20 @@ const debouncedFetch = debounce(
   }
 );
 
+// Fetching 249 countries in a single API is not a good idea, but since I can't change the backend and it is relatively optimized and fast it should be fine,
+// But what is not fine is to want to render all of those records at the same time on function that should appear instant.
+// So using a pagination system and "Observation API" I can break those numbers and render the search options (countries) a page at a time.
+// This way the "page" and "pageSize" variables determine how many countries are displayed at any time.
 const page = ref(1);
 const pageSize = ref(20);
 const displayedCountries = computed<Country[]>(() => {
   return countries.value.slice(0, page.value * pageSize.value);
 });
+
+// Since the observer should be accessed in multiple lines outside the "createObserver" function, and could not be created in "onMounted", it was defined as separated ref.
 const observer = ref<IntersectionObserver | null>(null);
+
+// Standard Intersect handler
 const handleIntersect = (entries: IntersectionObserverEntry[]) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -164,6 +176,8 @@ const handleIntersect = (entries: IntersectionObserverEntry[]) => {
     }
   });
 };
+
+// Standard Intersection Observer Creation with a root.
 const createObserver = () => {
   const rootEl = document.getElementById('observerRoot');
   const options = {
@@ -180,6 +194,7 @@ onMounted(() => {
   fetchCountries(field.value, query.value);
 });
 
+// The fetch function is exposed to be used by the search button in the parent.
 defineExpose({
   search: () => {
     debouncedFetch(field.value, query.value);

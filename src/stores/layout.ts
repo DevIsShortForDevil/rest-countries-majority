@@ -17,6 +17,7 @@ export const useLayoutStore = defineStore('layout', () => {
   };
 
   const setTheme = (val: Theme, setInStorage: boolean = true) => {
+    // Sets the theme in the store, localStorage, and as an attribute on the container.
     if (setInStorage) localStorage.setItem('theme', val);
     const container = document.getElementById('app');
     container?.setAttribute('data-theme', val);
@@ -29,6 +30,7 @@ export const useLayoutStore = defineStore('layout', () => {
 
   const { locale, availableLocales } = useI18n();
   const setLocale = (l: ArrayElement<typeof availableLocales>, setInStorage: boolean = true) => {
+    // Sets the locale in the localStorage and in I18n settings.
     locale.value = l;
     if (setInStorage) localStorage.setItem('locale', l);
   };
@@ -38,9 +40,10 @@ export const useLayoutStore = defineStore('layout', () => {
     if (storedTheme) setTheme(storedTheme);
     else if (window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark', false);
     // The goal is to only set the theme value in localStorage if the user has set the value manually
-    // If not the value follows the system settings and only uses that as a reference
+    // If not, the value follows the system settings and only uses that as a reference
     const storedLocale = localStorage.getItem('locale');
     if (storedLocale) locale.value = storedLocale;
+    // the same goal is true for locale value.
   };
 
   init(); // Called at load time to keep the theme values between the parent element (mainly for tw usage) and storage in sync

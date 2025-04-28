@@ -7,9 +7,11 @@
       class="flex justify-between items-center h-header-height md:h-header-height-md py-4 px-6 md:px-12"
     >
       <div class="flex items-center cursor-pointer" @click="router.push('/')">
+        <!-- The Layout Logo  -->
         <LogoIcon />
       </div>
       <div class="flex gap-2 items-center">
+        <!-- The dark mode button -->
         <button
           class="w-9 h-9 p-2 bg-dark-gray text-light-gray rounded-lg dark:bg-light-gray dark:text-dark-gray relative flex justify-center items-center cursor-pointer transition-colors duration-300 ease-in-out"
           @click="layoutStore.setTheme(layoutStore.darkMode() ? 'light' : 'dark')"
@@ -23,6 +25,7 @@
             :class="`absolute transition-transform duration-500 ${layoutStore.darkMode() ? 'scale-0 rotate-90' : 'scale-100 rotate-0'}`"
           />
         </button>
+        <!-- The Locale select component -->
         <LocaleSelect />
       </div>
     </header>

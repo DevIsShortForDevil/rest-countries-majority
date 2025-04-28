@@ -4,7 +4,10 @@
       class="w-full h-searchbar-height md:h-searchbar-height-md flex justify-center items-center"
     >
       <div class="w-full md:w-auto flex h-full rounded-lg divide-x divide-gold border border-gold">
+        <!-- Field select to be able to search based on country name, region or language -->
         <FieldSelect v-model="field" />
+        <!-- The main search component to call the search APIs and display the results  -->
+        <!-- Various values are defined as models to be accessible here -->
         <SearchInput
           v-model="selectedCountry"
           v-model:countries="countries"

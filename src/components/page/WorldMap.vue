@@ -1,4 +1,7 @@
 <template>
+  <!-- This is really big SVG, but it is decently optimized for size, I suggest collapsing the svg tag to see the rest. -->
+  <!-- One thing to note here is that this world map actually contains 261 path tags which each represent a country,
+      but the Rest Countries API has 249 countries, so there are 12 countries somewhere in this map that does not return a valid response -->
   <div class="w-full h-full flex justify-center items-center">
     <svg
       id="worldMapSvg"
@@ -1559,15 +1562,16 @@ const emit = defineEmits(['click']);
 
 const countryPaths = ref<NodeListOf<Element> | null>(null);
 const init = () => {
+  // "@click" eventListeners are added here. This is called on mount.
   countryPaths.value = document.querySelectorAll('#worldMapSvg path');
   countryPaths.value?.forEach((c) => {
     c.addEventListener('click', () => {
-      console.log('country clicked: ', c.id, c.getAttribute('title'));
       emit('click', c.id);
     });
   });
 };
 
+// This is where countries are highlighted when they appear in a search result.
 watch(countries, (val) => {
   countryPaths.value?.forEach((c) => {
     if (val?.some((country) => country.cca2 === c.id)) c.classList.add('!fill-gold');
