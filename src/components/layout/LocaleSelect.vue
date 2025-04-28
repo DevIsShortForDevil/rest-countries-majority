@@ -45,11 +45,12 @@ import { useI18n } from 'vue-i18n';
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue';
 import LanguageIcon from '@/assets/icons/LanguageIcon.vue';
 import { ArrayElement } from '@/types/interfaces';
+import { useLayoutStore } from '@/stores/layout';
 
 const { locale, availableLocales } = useI18n();
+const layoutStore = useLayoutStore();
 
 const onLocaleChange = (val: ArrayElement<typeof availableLocales>) => {
-  console.log('locale change val: ', val);
-  locale.value = val;
+  layoutStore.setLocale(val);
 };
 </script>
