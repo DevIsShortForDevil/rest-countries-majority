@@ -32,6 +32,7 @@
         @after-leave="
           () => {
             query = '';
+            selectedValue = null;
           }
         "
       >
