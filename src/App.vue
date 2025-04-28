@@ -30,7 +30,6 @@
       class="flex w-full overflow-auto h-main-height md:h-main-height-md [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
     >
       <div class="w-full h-full px-6 md:px-12">
-        <!-- <RouterView /> -->
         <router-view v-slot="{ Component, route }">
           <transition name="slide-right">
             <component :is="Component" :key="route.fullPath" />

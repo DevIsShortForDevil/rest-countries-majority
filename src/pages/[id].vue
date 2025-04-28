@@ -30,16 +30,16 @@
         class="w-full grid grid-flow-col grid-cols-1 md:grid-cols-2 grid-rows-10 md:grid-rows-5 p-10 gap-6 text-dark-gray dark:text-light-gray transition-colors duration-300 ease-in-out"
       >
         <div class="h-12 flex items-center gap-2 truncate">
-          <div class="w-1/4">{{ t('region') }}:</div>
-          <div class="w-3/4 truncate">{{ country.region }}</div>
+          <div class="w-1/2 sm:1/3 md:1/4">{{ t('region') }}:</div>
+          <div class="w-1/2 sm:2/3 md:w-3/4 truncate">{{ country.region }}</div>
         </div>
         <div class="h-12 flex items-center gap-2 truncate">
-          <div class="w-1/4">{{ t('capital') }}:</div>
-          <div class="w-3/4 truncate">{{ country.capital[0] }}</div>
+          <div class="w-1/2 sm:1/3 md:1/4">{{ t('capital') }}:</div>
+          <div class="w-1/2 sm:2/3 md:w-3/4 truncate">{{ country.capital[0] }}</div>
         </div>
         <div class="h-12 flex items-center gap-2 truncate">
-          <div class="w-1/4">{{ t('languages') }}:</div>
-          <div class="w-3/4 truncate">
+          <div class="w-1/2 sm:1/3 md:1/4">{{ t('languages') }}:</div>
+          <div class="w-1/2 sm:2/3 md:w-3/4 truncate">
             {{
               Object.values(country.languages).reduce(
                 (a, b, i, arr) => a + b + (i === arr.length - 1 ? '' : ', '),
@@ -49,16 +49,16 @@
           </div>
         </div>
         <div class="h-12 flex items-center gap-2 truncate">
-          <div class="w-1/4">{{ t('population') }}:</div>
-          <div class="w-3/4 truncate">{{ country.population }}</div>
+          <div class="w-1/2 sm:1/3 md:1/4">{{ t('population') }}:</div>
+          <div class="w-1/2 sm:2/3 md:w-3/4 truncate">{{ country.population }}</div>
         </div>
         <div class="h-12 flex items-center gap-2 truncate">
-          <div class="w-1/4">{{ t('area') }}:</div>
-          <div class="w-3/4 truncate">{{ country.area }} KM<sup>2</sup></div>
+          <div class="w-1/2 sm:1/3 md:1/4">{{ t('area') }}:</div>
+          <div class="w-1/2 sm:2/3 md:w-3/4 truncate">{{ country.area }} KM<sup>2</sup></div>
         </div>
         <div class="h-12 flex items-center gap-2 truncate">
-          <div class="w-1/4">{{ t('timezones') }}:</div>
-          <div class="w-3/4 truncate">
+          <div class="w-1/2 sm:1/3 md:1/4">{{ t('timezones') }}:</div>
+          <div class="w-1/2 sm:2/3 md:w-3/4 truncate">
             {{
               country.timezones.reduce(
                 (a, b, i, arr) => a + b + (i === arr.length - 1 ? '' : ', '),
@@ -68,8 +68,8 @@
           </div>
         </div>
         <div class="h-12 flex items-center gap-2 truncate">
-          <div class="w-1/4">{{ t('currencies') }}:</div>
-          <div class="w-3/4 truncate">
+          <div class="w-1/2 sm:1/3 md:1/4">{{ t('currencies') }}:</div>
+          <div class="w-1/2 sm:2/3 md:w-3/4 truncate">
             {{
               Object.values(country.currencies).reduce(
                 (a, b, i, arr) =>
@@ -80,8 +80,8 @@
           </div>
         </div>
         <div class="h-12 flex items-center gap-2 truncate">
-          <div class="w-1/4">{{ t('idd') }}:</div>
-          <div class="w-3/4 truncate">
+          <div class="w-1/2 sm:1/3 md:1/4">{{ t('idd') }}:</div>
+          <div class="w-1/2 sm:2/3 md:w-3/4 truncate">
             {{
               country.idd.suffixes.reduce(
                 (a, b, i, arr) => a + country?.idd.root + b + (i === arr.length - 1 ? '' : ', '),
@@ -91,12 +91,14 @@
           </div>
         </div>
         <div class="h-12 flex items-center gap-2 truncate">
-          <div class="w-1/4">{{ t('independent') }}:</div>
-          <div class="w-3/4 truncate">{{ t(country.independant ? 'yes' : 'no') }}</div>
+          <div class="w-1/2 sm:1/3 md:1/4">{{ t('independent') }}:</div>
+          <div class="w-1/2 sm:2/3 md:w-3/4 truncate">
+            {{ t(country.independant ? 'yes' : 'no') }}
+          </div>
         </div>
         <div class="h-12 flex items-center gap-2 truncate">
-          <div class="w-1/4">{{ t('unmember') }}:</div>
-          <div class="w-3/4 truncate">{{ t(country.unmember ? 'yes' : 'no') }}</div>
+          <div class="w-1/2 sm:1/3 md:1/4">{{ t('unmember') }}:</div>
+          <div class="w-1/2 sm:2/3 md:w-3/4 truncate">{{ t(country.unmember ? 'yes' : 'no') }}</div>
         </div>
       </div>
     </div>
